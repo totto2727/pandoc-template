@@ -12,3 +12,6 @@ pandoc:	$(MARKDOWN)
 
 build:	$(DOCKERFILE)
 		docker build -f $(DOCKERFILE) -t $(IMAGE_NAME) .
+		
+plantuml:	$(PLANTUML_SERVER_POOT:=9000) $(PLANTUML_SERVER_IMAGE:=plantuml/plantuml-server:jetty)
+		docker run -d --rm -p $(PLANTUML_SERVER_POOT):8080 $(plantuml/plantuml-server:jetty)
